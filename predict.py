@@ -25,3 +25,10 @@ df.describe()
 
 df.set_index('Month',inplace=True)
 # print(df)
+
+from pylab import rcParams
+rcParams['figure.figsize'] = 15, 7
+df.plot()
+
+from statsmodels.tsa.stattools import adfuller
+test_result=adfuller(df['Sales'])
