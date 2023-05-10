@@ -58,3 +58,16 @@ fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
 # Autocorrelation plot
 plot_acf(df['Sales'], lags=11, ax=ax1)
 ax1.set_title('Autocorrelation')
+
+# Partial autocorrelation plot
+plot_pacf(df['Sales'], lags=11, ax=ax2)
+ax2.set_title('Partial Autocorrelation')
+
+plt.tight_layout()
+plt.show()
+
+
+import statsmodels.api as sm
+model = sm.tsa.ARIMA(df['Sales'], order=(1, 1, 1))
+model_fit = model.fit()
+# print(model_fit.summary())
