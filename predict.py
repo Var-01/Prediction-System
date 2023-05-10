@@ -45,3 +45,16 @@ def adfuller_test(sales):
         print("Weak evidence against the null hypothesis, indicating it is non-stationary.")
 
 adfuller_test(df['Sales'])
+
+from pandas.plotting import autocorrelation_plot
+autocorrelation_plot(df['Sales'])
+plt.show()
+
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+import matplotlib.pyplot as plt
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+
+# Autocorrelation plot
+plot_acf(df['Sales'], lags=11, ax=ax1)
+ax1.set_title('Autocorrelation')
